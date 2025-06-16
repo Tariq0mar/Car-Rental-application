@@ -20,6 +20,7 @@
 
   <ItemGroup>
     <Folder Include="Models\Cars\" />
+    <Folder Include="Services\" />
   </ItemGroup>
 
 </Project>
