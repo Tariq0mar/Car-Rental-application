@@ -1,7 +1,19 @@
 using CarRentalApplication.DB.Contexts;
+using CarRentalApplication.DB.Validators.CarValidators;
+using FluentValidation;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
+
+
+
+builder.Services.AddScoped<Filter>();
+
+
+builder.Services.AddControllers(options =>
+{
+    options.Filters.Add<Filter>();
+});
 
 // Add services to the container.
 
