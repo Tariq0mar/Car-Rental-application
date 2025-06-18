@@ -21,7 +21,6 @@
 
   <ItemGroup>
     <Folder Include="Services\" />
-    <Folder Include="Validators\CarValidators\" />
     <Folder Include="Validators\UserValidators\" />
   </ItemGroup>
 
