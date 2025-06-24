@@ -21,7 +21,7 @@ public class BookingService : IBookingService
 
         if (booking is null)
         {
-            throw new NotFoundException<Booking>(id);
+            throw new NotFoundException<Booking>($"{id}");
         }
 
         return booking;
@@ -55,7 +55,7 @@ public class BookingService : IBookingService
 
         if (state is false)
         {
-            throw new NotFoundException<Booking>(booking.Id);
+            throw new NotFoundException<Booking>($"{booking.Id}");
         }
     }
     public async Task DeleteAsync(int id)
@@ -64,7 +64,7 @@ public class BookingService : IBookingService
 
         if (state is false)
         {
-            throw new NotFoundException<Booking>(id);
+            throw new NotFoundException<Booking>($"{id}");
         }
     }
 }

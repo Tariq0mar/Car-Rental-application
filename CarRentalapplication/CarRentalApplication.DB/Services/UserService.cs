@@ -21,7 +21,7 @@ public class UserService : IUserService
 
         if (user is null)
         {
-            throw new NotFoundException<User>(id);
+            throw new NotFoundException<User>($"{id}");
         }
 
         return user;
@@ -55,7 +55,7 @@ public class UserService : IUserService
 
         if (state is false)
         {
-            throw new NotFoundException<User>(user.Id);
+            throw new NotFoundException<User>($"{user.Id}");
         }
     }
     public async Task DeleteAsync(int id)
@@ -64,7 +64,7 @@ public class UserService : IUserService
 
         if (state is false)
         {
-            throw new NotFoundException<User>(id);
+            throw new NotFoundException<User>($"{id}");
         }
     }
 }

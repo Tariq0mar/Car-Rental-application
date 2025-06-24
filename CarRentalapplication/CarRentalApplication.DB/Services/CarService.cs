@@ -22,7 +22,7 @@ public class CarService : ICarService
 
         if (car is null)
         {
-            throw new NotFoundException<Car>(id);
+            throw new NotFoundException<Car>($"{id}");
         }
 
         return car;
@@ -56,7 +56,7 @@ public class CarService : ICarService
 
         if (state is false)
         {
-            throw new NotFoundException<Car>(car.Id);
+            throw new NotFoundException<Car>($"{car.Id}");
         }
     }
     public async Task DeleteAsync(int id)
@@ -65,7 +65,7 @@ public class CarService : ICarService
 
         if (state is false)
         {
-            throw new NotFoundException<Car>(id);
+            throw new NotFoundException<Car>($"{id}");
         }
     }
 }

@@ -1,6 +1,8 @@
-﻿namespace CarRentalApplication.DB.Interfaces.Repositories;
+﻿using CarRentalApplication.DB.Models;
+
+namespace CarRentalApplication.DB.Interfaces.Repositories;
 
 public interface IAuthRepository
 {
-    Task<bool> LoginAsync(string email, string password);
+    Task<User?> LoginAsync(string email, string password);
 }
