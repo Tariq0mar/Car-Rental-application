@@ -34,7 +34,7 @@ public class UserController : ControllerBase
         return Ok(user);
     }
 
-    [HttpGet("filter")]
+    [HttpGet("user-search")]
     public async Task<ActionResult> GetFiltered([FromBody] UserFilteringQueryParameters query)
     {
         var filteredUsers = await _userService.GetFilteredAsync(query);

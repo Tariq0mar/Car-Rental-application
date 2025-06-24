@@ -24,6 +24,12 @@ builder.Services.AddDbContext<CarRentalApplicationDbContext>(options =>
     )
 );
 
+// add filters
+builder.Services.AddControllers(options =>
+{
+    options.Filters.Add<ExceptionFilter>();
+});
+
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
     {

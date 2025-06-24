@@ -34,7 +34,7 @@ public class BookingController : ControllerBase
         return Ok(booking);
     }
 
-    [HttpGet("filter")]
+    [HttpGet("booking-search")]
     public async Task<ActionResult> GetFiltered([FromBody] BookingFilteringQueryParameters query)
     {
         var filteredBookings = await _bookingService.GetFilteredAsync(query);

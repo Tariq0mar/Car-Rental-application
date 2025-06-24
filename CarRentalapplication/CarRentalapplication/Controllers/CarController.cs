@@ -34,7 +34,7 @@ public class CarController : ControllerBase
         return Ok(car);
     }
 
-    [HttpGet("filter")]
+    [HttpGet("car-search")]
     public async Task<ActionResult> GetFiltered([FromBody] CarFilteringQueryParameters query)
     {
         var filteredCars = await _carService.GetFilteredAsync(query);

@@ -2,8 +2,8 @@
 
 public class BookingFilteringQueryParameters
 {
-    public int? UserId { get; set; }
-    public int? CarId { get; set; }
+    public int? UserId { get; init; }
+    public int? CarId { get; init; }
 
     public DateTime? StartDateFrom { get; set; }
     public DateTime? StartDateTo { get; set; }

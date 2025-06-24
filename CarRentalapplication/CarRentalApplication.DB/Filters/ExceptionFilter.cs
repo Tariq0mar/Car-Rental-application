@@ -3,15 +3,14 @@ using FluentValidation;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 
-public class Filter : IActionFilter
+public class ExceptionFilter : IActionFilter
 {
     private readonly IServiceProvider _serviceProvider;
 
-    public Filter(IServiceProvider serviceProvider)
+    public ExceptionFilter(IServiceProvider serviceProvider)
     {
         _serviceProvider = serviceProvider;
     }
-
     
     public void OnActionExecuting(ActionExecutingContext context)
     {
@@ -37,8 +36,6 @@ public class Filter : IActionFilter
             }
         }
     }
-
-    
     public void OnActionExecuted(ActionExecutedContext context)
     {
         if (context.Exception is null)
@@ -79,7 +76,6 @@ public class Filter : IActionFilter
             context.ExceptionHandled = true;
         }
     }
-
     private bool IsGenericExceptionOfType(Exception ex, Type genericExceptionType)
     {
         var exType = ex.GetType();
