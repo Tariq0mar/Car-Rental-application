@@ -11,7 +11,6 @@ public class UserFilteringQueryParameters
     public DateTime? MinDateOfBirth { get; set; }
     public DateTime? MaxDateOfBirth { get; set; }
 
-
     public int PageNumber { get; set; } = 1;
     public int PageSize { get; set; } = 10;
 }
