@@ -40,10 +40,12 @@ public class CarRepository : ICarRepository
 
         return await cars.ToListAsync();
     }
-    public async Task AddAsync(Car car)
+    public async Task<Car?> AddAsync(Car car)
     {
         await _context.Cars.AddAsync(car);
         await _context.SaveChangesAsync();
+
+        return car;
     }
     public async Task<bool> UpdateAsync(Car car)
     {

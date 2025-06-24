@@ -15,7 +15,7 @@ public class UserService : IUserService
         _userRepository = userRepository;
     }
 
-    public async Task<User?> GetByIdAsync(int id)
+    public async Task<User> GetByIdAsync(int id)
     {
         var user = await _userRepository.GetByIdAsync(id);
 
@@ -37,9 +37,16 @@ public class UserService : IUserService
         return await _userRepository.GetFilteredAsync(query);
     }
 
-    public async Task AddAsync(User user)
+    public async Task<User> AddAsync(User user)
     {
-        await _userRepository.AddAsync(user);
+        var AddedUser = await _userRepository.AddAsync(user);
+
+        if (AddedUser is null)
+        {
+            throw new Exception("the user have not been added");
+        }
+
+        return AddedUser;
     }
 
     public async Task UpdateAsync(User user)
@@ -59,10 +66,5 @@ public class UserService : IUserService
         {
             throw new NotFoundException<User>(id);
         }
-    }
-
-    public Task Login(string email, int id)
-    {
-        throw new NotImplementedException();
     }
 }

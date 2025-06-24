@@ -54,10 +54,12 @@ public class BookingRepository : IBookingRepository
         return await bookings.ToListAsync();
     }
 
-    public async Task AddAsync(Booking booking)
+    public async Task<Booking?> AddAsync(Booking booking)
     {
         await _context.Bookings.AddAsync(booking);
         await _context.SaveChangesAsync();
+
+        return booking;
     }
 
     public async Task<bool> UpdateAsync(Booking booking)

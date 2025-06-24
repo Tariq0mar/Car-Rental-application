@@ -3,6 +3,7 @@ using CarRentalApplication.DB.Interfaces.Repositories;
 using CarRentalApplication.DB.Interfaces.Services;
 using CarRentalApplication.DB.Models;
 using CarRentalApplication.DB.Models.Cars;
+using CarRentalApplication.DB.Repositories;
 
 namespace CarRentalApplication.DB.Services;
 
@@ -15,7 +16,7 @@ public class CarService : ICarService
         _carRepository = carRepository;
     }
 
-    public async Task<Car?> GetByIdAsync(int id)
+    public async Task<Car> GetByIdAsync(int id)
     {
         var car = await _carRepository.GetByIdAsync(id);
 
@@ -37,9 +38,16 @@ public class CarService : ICarService
         return await _carRepository.GetFilteredAsync(query);
     }
 
-    public async Task AddAsync(Car car)
+    public async Task<Car> AddAsync(Car car)
     {
-        await _carRepository.AddAsync(car);
+        var AddedCar = await _carRepository.AddAsync(car);
+
+        if (AddedCar is null)
+        {
+            throw new Exception("the car have not been added");
+        }
+
+        return AddedCar;
     }
 
     public async Task UpdateAsync(Car car)

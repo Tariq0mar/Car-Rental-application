@@ -15,7 +15,7 @@ public class BookingService : IBookingService
         _bookingRepository = bookingRepository;
     }
 
-    public async Task<Booking?> GetByIdAsync(int id)
+    public async Task<Booking> GetByIdAsync(int id)
     {
         var booking = await _bookingRepository.GetByIdAsync(id);
 
@@ -37,9 +37,16 @@ public class BookingService : IBookingService
         return await _bookingRepository.GetFilteredAsync(query);
     }
 
-    public async Task AddAsync(Booking booking)
+    public async Task<Booking> AddAsync(Booking booking)
     {
-        await _bookingRepository.AddAsync(booking);
+        var AddedBooking = await _bookingRepository.AddAsync(booking);
+
+        if (AddedBooking is null)
+        {
+            throw new Exception("the booking have not been added");
+        }
+
+        return AddedBooking;
     }
 
     public async Task UpdateAsync(Booking booking)

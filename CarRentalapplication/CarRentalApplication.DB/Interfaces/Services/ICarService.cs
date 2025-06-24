@@ -5,10 +5,10 @@ namespace CarRentalApplication.DB.Interfaces.Services;
 
 public interface ICarService
 {
-    Task<Car?> GetByIdAsync(int id);
+    Task<Car> GetByIdAsync(int id);
     Task<IEnumerable<Car>> GetAllAsync();
     Task<IEnumerable<Car>> GetFilteredAsync(CarFilteringQueryParameters query);
-    Task AddAsync(Car car);
+    Task<Car> AddAsync(Car car);
     Task UpdateAsync(Car car);
     Task DeleteAsync(int id);
 }

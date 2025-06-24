@@ -59,10 +59,12 @@ public class UserRepository : IUserRepository
         return await users.ToListAsync();
     }
 
-    public async Task AddAsync(User user)
+    public async Task<User?> AddAsync(User user)
     {
         await _context.Users.AddAsync(user);
         await _context.SaveChangesAsync();
+
+        return user;
     }
 
     public async Task<bool> UpdateAsync(User user)
